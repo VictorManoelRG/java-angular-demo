@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  hello() {
-    return this.http.get(this.apiUrl + '/hello', { responseType: 'text' });
+  criarUsuario(user: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, user);
   }
 }
